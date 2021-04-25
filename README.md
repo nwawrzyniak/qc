@@ -8,4 +8,6 @@ Place it in the ".qc" directory in your user home directory. This directory is c
 
 Instead of calling qc via the command ```java -jar "path/to/qc.jar" "secret_file"``` you can place the attached script file to any directory within your PATH. If you move only the script and not the .jar file aswell, you should specify the new path in the script file.
 
-That's it.
+Done.
+
+If you want to load the contents of (e.g.) the file "ssh-key" just call ````qc ssh-key``` from WIN+R ("run" dialog) or from the command line.
