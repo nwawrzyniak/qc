@@ -13,4 +13,4 @@ Instead of calling qc via the command ```java -jar "path/to/qc.jar" "secret_file
 
 Done.
 
-If you want to load the contents of (e.g.) the file "ssh-key" just call ````qc ssh-key``` from WIN+R ("run" dialog) or from the command line.
+If you want to load the contents of (e.g.) the file "ssh-key" just call ```qc ssh-key``` from the "run" dialog or from the command line.
