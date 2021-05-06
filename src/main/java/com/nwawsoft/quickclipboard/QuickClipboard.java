@@ -4,7 +4,7 @@ import java.io.*;
 
 public class QuickClipboard {
   public static final String DEFAULT_SECRET = "default_secret";
-  public static final String[] helpStrings = {"-help", "--help", "--h", "--help", "/h", "/H"};
+  public static final String[] helpStrings = {"-help", "--help", "-h", "--h", "/h", "/H"};
   
   public static String load() {
     return load(DEFAULT_SECRET);
