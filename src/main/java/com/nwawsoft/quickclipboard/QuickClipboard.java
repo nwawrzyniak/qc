@@ -7,10 +7,12 @@ public class QuickClipboard {
   private static final int VERSION_MAJOR = 1;
   private static final int VERSION_FEATURE = 1;
   private static final int VERSION_FIX = 0;
-  private static final String VERSION = VERSION_MAJOR + "." + VERSION_FEATURE + "." + VERSION_FIX;
+  private static final char VERSION_SPACER = '.';
+  private static final String VERSION = "" + VERSION_MAJOR + VERSION_SPACER + VERSION_FEATURE + VERSION_SPACER +
+      VERSION_FIX;
   private static final String DEFAULT_SECRET = "default_secret";
   private static final String[] HELP_STRINGS = {"-help", "--help", "-h", "--h", "/h", "/H"};
-  private static final String HIDDEN_DIRECTORY_PREFIX = ".";
+  private static final char HIDDEN_DIRECTORY_PREFIX = '.';
   private static final String SOFTWARE_SHORT_NAME = "qc";
   private static final String DIRECTORY_NAME = HIDDEN_DIRECTORY_PREFIX + SOFTWARE_SHORT_NAME;
   
