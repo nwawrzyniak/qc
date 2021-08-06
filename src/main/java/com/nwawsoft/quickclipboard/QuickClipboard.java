@@ -14,6 +14,7 @@ public class QuickClipboard {
   private static final String[] HELP_STRINGS = {"-help", "--help", "-h", "--h", "/h", "/H"};
   private static final char HIDDEN_DIRECTORY_PREFIX = '.';
   private static final String SOFTWARE_SHORT_NAME = "qc";
+  private static final String SOFTWARE_LONG_NAME = "quick-clipboard";
   private static final String DIRECTORY_NAME = HIDDEN_DIRECTORY_PREFIX + SOFTWARE_SHORT_NAME;
   
   public static String load(final Mode mode, final String fileName) {
@@ -83,7 +84,7 @@ public class QuickClipboard {
   }
   
   public static void printHelp() {
-    System.out.println("Help for qc (quick-clipboard) v" + VERSION + ":");
+    System.out.println("Help for " + SOFTWARE_SHORT_NAME + "(" + SOFTWARE_LONG_NAME + ") v" + VERSION + ":");
     System.out.println("  Usage: java -jar qc.jar [fileName]");
     String path = System.getProperty("user.home") + System.getProperty("file.separator") + DIRECTORY_NAME;
     path = path.replaceAll("\\\\", "/");
