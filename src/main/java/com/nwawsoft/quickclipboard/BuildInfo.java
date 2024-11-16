@@ -10,15 +10,15 @@ public class BuildInfo {
   private static final int VERSION_MAJOR   = 2;
   private static final int VERSION_MINOR = 0;
   private static final int VERSION_PATCH = 0;
-  private static final String VERSION_SUFFIX = ""; // Must start with "_" (underscore) if not empty
+  private static final String VERSION_SUFFIX = "-rc1"; // Should start with "-" if not empty
 
   /**
    * Builds the version number from its component fields and ensures semantic versioning.
    * The format is as follows:
    * [VERSION_PREFIX][VERSION_MAJOR][VERSION_SPACER][VERSION_MINOR][VERSION_SPACER][VERSION_PATCH][VERSION_SUFFIX]
    * As VERSION_PREFIX we chose "v" and VERSION_SPACER is "." (dot).
-   * VERSION_SUFFIX may either be a String starting with "_" (e.g. "_rc1) or empty.
-   * Examples: "v1.2.3" or "v2.0.0_rc1".
+   * VERSION_SUFFIX may either be a String starting with "-" (e.g. "-rc1) or empty.
+   * Examples: "v1.2.3" or "v2.0.0-rc1".
    *
    * @return The version number in a human-readable format.
    */
