@@ -6,4 +6,5 @@
 out/
 qc.jar
 qc.zip
+qc*.zip
 pack_zip.bat
