@@ -5,7 +5,7 @@ A lightweight CLI tool written in Java which lets the user load any predefined c
 The newest version of qc can always be found on the ["Releases" tab on GitHub](https://github.com/nwawrzyniak/qc/releases).
 
 ## Recommended setup
-1. Extract qc.zip into any directory (e.g. ```~/UserSoftware/qc```).
+1. Extract ```qc.zip``` into any directory (e.g. ```~/UserSoftware/qc```).
 2. Add the directory to your PATH.
 
 ## Usage
