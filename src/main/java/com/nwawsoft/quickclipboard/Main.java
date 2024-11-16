@@ -28,7 +28,7 @@ public class Main {
    * @param args the arguments qc is called with. This should be "help", "clear", "browse" or the path or file name of a secret.
    */
   public static void main(final String[] args) {
-    SimpleLogger.getInstance(new File(HOME + SEP + DIRECTORY_NAME + SEP + LOGS_DIR + SEP + LOG_FILE)); // Initializes the logger
+    SimpleLogger.createInstance(new File(HOME + SEP + DIRECTORY_NAME + SEP + LOGS_DIR + SEP + LOG_FILE)); // Initializes the logger
     Setup.guaranteeDirectories();
     Setup.guaranteeDefaultSecret();
     if (args != null) {

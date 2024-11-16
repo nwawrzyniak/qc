@@ -24,20 +24,22 @@ public class SimpleLogger {
 
   /**
    * Creates and/or returns the SimpleLogger instance.
+   * Calling this function again fails, resulting in the call being ignored.
    *
    * @param logFile The file to write to.
-   * @return The SimpleLogger instance.
    */
-  public static SimpleLogger getInstance(final File logFile) {
+  public static void createInstance(final File logFile) {
     if (logger == null) {
       logger = new SimpleLogger(logFile);
+    } else {
+      System.err.println("SimpleLogger instance has already been created. Ignoring call.");
+      System.out.println("Existing log file: " + logger.logFile.getAbsolutePath());
     }
-    return logger;
   }
 
   /**
    * Returns the SimpleLogger instance.
-   * If no log file has been specified previously the software exits with exit code -1.
+   * If createInstance(File) has not been called previously the operation fails and the software exits with exit code -1.
    *
    * @return The SimpleLogger instance.
    */
