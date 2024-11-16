@@ -2,7 +2,7 @@
 A lightweight CLI tool written in Java which lets the user load any predefined content into the clipboard.
 
 ## Download
-The newest version of qc can always be found on the ["Releases" tab on GitHub](https://github.com/nwawrzyniak/qc/releases).
+You can always find the [latest version of qc here](https://github.com/nwawrzyniak/qc/releases/latest) or [all versions here](https://github.com/nwawrzyniak/qc/releases).
 
 ## Recommended setup
 ### For Windows
