@@ -44,7 +44,7 @@ public class Main {
           } else if (StringArrayFunctions.contains(CLEAR_STRINGS, args[0])) { // clipboard clear requested
             ClipboardManager.clearClipboard();
             System.exit(0);
-          } else if (StringArrayFunctions.contains(BROWSE_STRINGS, args[0])) { // clipboard clear requested
+          } else if (StringArrayFunctions.contains(BROWSE_STRINGS, args[0])) { // directory browsing requested
             FileBrowser.openDirectory(HOME + SEP + DIRECTORY_NAME + SEP + SECRETS_DIR);
             System.exit(0);
           }
