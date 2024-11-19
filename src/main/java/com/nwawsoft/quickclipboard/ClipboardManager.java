@@ -1,11 +1,14 @@
 package com.nwawsoft.quickclipboard;
 
+import com.nwawsoft.util.EmptyTransferable;
 import com.nwawsoft.util.SimpleLogger;
+import com.nwawsoft.util.Sleep;
 import com.nwawsoft.util.StandardStream;
 
-import java.awt.*;
+import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.io.IOException;
 
 /**
@@ -18,24 +21,17 @@ public class ClipboardManager {
    * @param clipboardText The text to copy to the clipboard.
    */
   public static void copyToClipboard(final String clipboardText) {
+    Sleep.sleep1ms(); // Important on Windows because the clipboard may not be instantly available.
     SimpleLogger sl = SimpleLogger.getInstance();
+    Transferable transferable = new StringSelection(clipboardText);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     try {
-      Thread.sleep(1);
-    } catch (final InterruptedException e) {
-      if (sl != null) sl.log("Sleep was interrupted.", StandardStream.ERR, false);
+      clipboard.setContents(transferable, null);
+    } catch (final IllegalStateException e) {
+      if (sl != null) sl.log("", StandardStream.ERR);
     }
-    getSystemClipboard().setContents(new StringSelection(clipboardText), null);
     if (sl != null) sl.log("Loaded text into clipboard.", StandardStream.OUT, true);
-  }
-
-  /**
-   * Returns the Clipboard object that Java keeps synchronized with the OS's clipboard.
-   * This is just a wrapper to not call Toolkit explicitly.
-   *
-   * @return The default Clipboard object.
-   */
-  private static Clipboard getSystemClipboard() {
-    return Toolkit.getDefaultToolkit().getSystemClipboard();
+    Sleep.sleep1ms(); // Important on Linux with X11 or Wayland. Without this sleep the operation will likely fail.
   }
 
   /**
@@ -43,8 +39,10 @@ public class ClipboardManager {
    * On Windows this also clears the "Clipboard History".
    */
   public static void clearClipboard() {
+    Sleep.sleep1ms(); // Important on Windows because the clipboard may not be instantly available.
     SimpleLogger sl = SimpleLogger.getInstance();
-    getSystemClipboard().setContents(new StringSelection(""), null);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    clipboard.setContents(new EmptyTransferable(), null);
     if (sl != null) sl.log("Clipboard cleared.", StandardStream.OUT, true);
     String os = System.getProperty("os.name").toLowerCase();
     if (os.contains("win")) {
@@ -63,5 +61,6 @@ public class ClipboardManager {
         System.exit(-1);
       }
     }
+    Sleep.sleep1ms(); // Important on Linux with X11 or Wayland. Without this sleep the operation will likely fail.
   }
 }

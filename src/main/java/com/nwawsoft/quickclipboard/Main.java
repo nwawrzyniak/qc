@@ -1,14 +1,10 @@
 package com.nwawsoft.quickclipboard;
 
-import com.nwawsoft.util.FileBrowser;
-import com.nwawsoft.util.SimpleLogger;
-import com.nwawsoft.util.StandardStream;
-import com.nwawsoft.util.StringArrayFunctions;
+import com.nwawsoft.util.*;
 
 import java.io.File;
 
 import static com.nwawsoft.quickclipboard.QCConstants.*;
-import java.lang.Thread;
 
 /**
  * Main function of qc.
@@ -37,7 +33,6 @@ public class Main {
     if (args != null) {
       if (args.length == 0) { // no args
         ClipboardManager.copyToClipboard(ContentLoader.load(DEFAULT_SECRET));
-        sleep1ms(); // Important on Linux with X11 or Wayland. Without this sleep the copy will likely fail.
         System.exit(0);
       }
       else { // args found
@@ -47,7 +42,6 @@ public class Main {
             System.exit(0);
           } else if (StringArrayFunctions.contains(CLEAR_STRINGS, args[0])) { // clipboard clear requested
             ClipboardManager.clearClipboard();
-            sleep1ms(); // Important on Linux with X11 or Wayland. Without this sleep the operation will likely fail.
             System.exit(0);
           } else if (StringArrayFunctions.contains(BROWSE_STRINGS, args[0])) { // directory browsing requested
             FileBrowser.openDirectory(HOME + SEP + DIRECTORY_NAME + SEP + SECRETS_DIR);
@@ -55,24 +49,13 @@ public class Main {
           }
           else { // load requested (argument is interpreted as the name or path of the secret to load)
             ClipboardManager.copyToClipboard(ContentLoader.load(args[0]));
-            sleep1ms(); // Important on Linux with X11 or Wayland. Without this sleep the copy will likely fail.
             System.exit(0);
           }
         } else { // too many args
-          sl.log("Too many arguments. If your file name or file path contains spaces surround it with quotes (\"\").", StandardStream.ERR);
+          if (sl != null) sl.log("Too many arguments. If your file name or file path contains spaces surround it with quotes (\"\").", StandardStream.ERR);
           System.exit(-1);
         }
       }
-    }
-  }
-
-  private static void sleep1ms() {
-    SimpleLogger sl = SimpleLogger.getInstance();
-    try {
-      Thread.sleep(1);
-    } catch (final InterruptedException e) {
-      sl.log("Sleep was interrupted. Aborting.", StandardStream.ERR);
-      System.exit(-1);
     }
   }
 }
