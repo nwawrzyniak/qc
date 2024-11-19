@@ -29,6 +29,7 @@ public class Main {
    */
   public static void main(final String[] args) {
     SimpleLogger.createInstance(new File(HOME + SEP + DIRECTORY_NAME + SEP + LOGS_DIR + SEP + LOG_FILE)); // Initializes the logger
+    SimpleLogger sl = SimpleLogger.getInstance();
     Setup.guaranteeDirectories();
     Setup.guaranteeDefaultSecret();
     if (args != null) {
