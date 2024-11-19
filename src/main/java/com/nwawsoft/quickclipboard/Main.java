@@ -53,7 +53,7 @@ public class Main {
             System.exit(0);
           }
         } else { // too many args
-          System.err.println("Too many arguments. If your file name or file path contains spaces surround it with quotes (\"\").");
+          sl.log("Too many arguments. If your file name or file path contains spaces surround it with quotes (\"\").", StandardStream.ERR);
           System.exit(-1);
         }
       }
